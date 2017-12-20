@@ -1,0 +1,3 @@
+module Funnels
+  # Your code goes here...
+end
