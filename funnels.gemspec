@@ -8,8 +8,9 @@ Gem::Specification.new do |s|
   s.name        = "funnels"
   s.version     = Funnels::VERSION
   s.authors     = ["Keegan Leitz"]
-  s.email       = ["keegan@openbay.com"]
-  s.homepage    = "TODO"
+  s.email       = ["kjleitz@gmail.com"]
+
+  s.homepage    = "https://github.com/kjleitz/funnels"
   s.summary     = "TODO: Summary of Funnels."
   s.description = "TODO: Description of Funnels."
   s.license     = "MIT"

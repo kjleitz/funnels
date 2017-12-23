@@ -1,3 +1,4 @@
+require 'funnels/core_ext'
+
 module Funnels
-  # Your code goes here...
 end
