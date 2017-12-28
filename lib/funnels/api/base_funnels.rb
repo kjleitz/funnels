@@ -1,5 +1,5 @@
 module Funnels
-  class BaseFunnels < ActiveRecord::Base
+  class BaseFunnels
     def funnel(description)
       return unless block_given?
       funnel = Funnels::Funnel.new description: description
