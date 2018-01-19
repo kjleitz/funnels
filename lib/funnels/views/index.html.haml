@@ -1,0 +1,24 @@
+%h1 Funnels
+-# this is a little too much logic; should put the formatting/calculation
+-# stuff into the funnel serializer, maybe.
+
+- @funnels.each do |funnel|
+  %h2= funnel.name
+  %h3= funnel.description
+
+  - previous_step_events_count = 0
+  - funnel.event_keys.each_with_index do |event_key, index|
+    - step_number = index + 1
+    - step_events = funnel.valid_events_by_step[event_key]
+    %h4
+      %span.step_number= "Step #{step_number}:"
+      %span.step_event_key= event_key.to_s
+      %span.step_event_required= "(required)" if funnel.required_event_keys.include? event_key
+    %h5= step_events.first.label
+    %h6  Number of events:
+    %p=  step_events.count
+    %h6  Number of unique users:
+    %p=  step_events.pluck(:user_id).uniq.count
+    - if step_number > 1
+      %h6 Percent coming from last step:
+      %p= "#{(step_events.count / previous_step_events_count) * 100}%"

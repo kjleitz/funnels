@@ -3,11 +3,13 @@ module Funnels
     serialize :steps, Array
 
     validate  :steps_must_be_correct_structure
-    validates :name,        presence: true, uniqueness: true
+    validates :name,        presence: true, uniqueness: { scope: :category }
     validates :description, presence: true
+    validates :category,    presence: true
     validates :tracked_by,  inclusion: [:user_id, :ip_address]
 
     before_validation :set_default_name
+    before_validation :set_default_category
 
     def name(funnel_name)
       self.name = funnel_name

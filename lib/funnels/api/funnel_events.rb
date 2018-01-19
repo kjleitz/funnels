@@ -9,12 +9,14 @@ module Funnels
         label      = event_label || options.delete(:label) || event_key.to_s.capitalize.tr '_', ' '
         user_id    = options.delete(:user_id)    || current_user.id
         ip_address = options.delete(:ip_address) || request.remote_ip
+        referrer   = options.delete(:referrer)   || request.referrer
 
         attrs = {
           event_key:  event_key,
           label:      label,
           user_id:    user_id,
-          ip_address: ip_address
+          ip_address: ip_address,
+          referrer:   referrer
         }.merge(options)
 
         Funnels::FunnelEvent.create **attrs
